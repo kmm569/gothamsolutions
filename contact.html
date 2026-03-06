@@ -127,14 +127,21 @@ const messageBox = document.getElementById("formMessage");
 
 const params = new URLSearchParams(window.location.search);
 
+const storedTemplate = sessionStorage.getItem("template");
+const storedSource = sessionStorage.getItem("source");
+
 if (params.has("template")) {
 	templateField.value = params.get("template");
-} else {
-	templateField.value = "";
+	sessionStorage.setItem("template", params.get("template"));
+} else if (storedTemplate) {
+	templateField.value = storedTemplate;
 }
 
 if (params.has("source")) {
 	sourceField.value = params.get("source");
+	sessionStorage.setItem("source", params.get("source"));
+} else if (storedSource) {
+	sourceField.value = storedSource;
 } else {
 	sourceField.value = "Website";
 }

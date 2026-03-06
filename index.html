@@ -168,5 +168,19 @@ Because everything is built in Google Sheets, your system can grow and adapt as 
 	<p>&copy; 2026 Gotham Solutions</p>
 </footer>
 
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+if (params.has("template")) {
+	sessionStorage.setItem("template", params.get("template"));
+}
+
+if (params.has("source")) {
+	sessionStorage.setItem("source", params.get("source"));
+}
+
+</script>
 </body>
 </html>

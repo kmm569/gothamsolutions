@@ -32,8 +32,8 @@
 </header>
 
 <main>
-
-<section class="form-card">
+<section class="contact-section">
+<div class="form-card">
 
 <h2>Request a Quote</h2>
 
@@ -108,8 +108,8 @@
 
 <div id="formMessage"></div>
 
+</div>
 </section>
-
 </main>
 
 <footer>
@@ -146,11 +146,26 @@ if (params.has("source")) {
 	sourceField.value = "Website";
 }
 
+let submitting = false;
+
 form.addEventListener("submit", function(e){
+
+	if(submitting){
+		return;
+	}
+
+	submitting = true;
 
 	e.preventDefault();
 
+	const submitBtn = form.querySelector("button");
+	submitBtn.disabled = true;
+	submitBtn.textContent = "Sending...";
+
 	const formData = new FormData(form);
+	const data = Object.fromEntries(formData.entries());
+
+	e.preventDefault();
 
 	fetch(scriptURL, {
 		method: "POST",
@@ -159,7 +174,13 @@ form.addEventListener("submit", function(e){
 	})
 	.then(() => {
 
-		form.style.display = "none";
+	setTimeout(()=>{
+		submitting = false;
+		submitBtn.disabled = false;
+		submitBtn.textContent = "Send Inquiry";
+	},60000);
+
+	form.style.display = "none";
 
 		messageBox.style.display = "block";
 		messageBox.innerHTML =

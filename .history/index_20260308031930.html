@@ -22,13 +22,12 @@
 	</div>
 
 	<nav>
-	<ul>
-		<li><a href="index.html" class="nav-link">Home</a></li>
-		<li><a href="templates.html" class="nav-link">Templates</a></li>
-		<li><a href="about.html" class="nav-link">About</a></li>
-		<li><a href="contact.html" class="nav-link">Contact</a></li>
-	</ul>
-</nav>
+		<ul>
+			<li><a href="index.html" class="nav-link">Home</a></li>
+			<li><a href="about.html" class="nav-link">About</a></li>
+			<li><a href="contact.html" class="nav-link">Contact</a></li>
+		</ul>
+	</nav>
 
 </header>
 
@@ -182,26 +181,15 @@ if (params.has("template")) {
 if (params.has("source")) {
 	sessionStorage.setItem("source", params.get("source"));
 }
+window.addEventListener("scroll", function(){
 
-const header = document.querySelector("header");
+	const header = document.querySelector("header");
 
-let isShrunk = false;
-
-const shrinkPoint = 120;
-const expandPoint = 40;
-
-window.addEventListener("scroll", () => {
-
-	const scroll = window.scrollY;
-
-	if (!isShrunk && scroll > shrinkPoint) {
+	if (window.scrollY > 80){
 		header.classList.add("scrolled");
-		isShrunk = true;
 	}
-
-	if (isShrunk && scroll < expandPoint) {
+	else{
 		header.classList.remove("scrolled");
-		isShrunk = false;
 	}
 
 });

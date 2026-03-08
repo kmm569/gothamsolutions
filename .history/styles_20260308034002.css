@@ -526,31 +526,19 @@ body{
 
 .template-gallery{
 	display:flex;
-	gap:12px;
-	margin-bottom:18px;
-	flex-wrap:wrap;
+	gap:10px;
+	margin-bottom:14px;
 }
 
 .template-gallery img{
-	width:90px;
-	height:65px;
-
+	width:70px;
+	height:50px;
 	object-fit:cover;
-
 	border-radius:6px;
 	cursor:pointer;
-
-	transition:
-		transform 0.15s ease,
-		box-shadow 0.15s ease;
+	transition:transform 0.15s ease;
 }
 
 .template-gallery img:hover{
 	transform:scale(1.05);
-	box-shadow:0 6px 12px rgba(0,0,0,0.15);
-}
-
-.template-card .button-primary{
-	width:100%;
-	text-align:center;
 }

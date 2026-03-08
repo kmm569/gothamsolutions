@@ -22,13 +22,12 @@
 	</div>
 
 	<nav>
-	<ul>
-		<li><a href="index.html" class="nav-link">Home</a></li>
-		<li><a href="templates.html" class="nav-link">Templates</a></li>
-		<li><a href="about.html" class="nav-link">About</a></li>
-		<li><a href="contact.html" class="nav-link">Contact</a></li>
-	</ul>
-</nav>
+		<ul>
+			<li><a href="index.html" class="nav-link">Home</a></li>
+			<li><a href="about.html" class="nav-link">About</a></li>
+			<li><a href="contact.html" class="nav-link">Contact</a></li>
+		</ul>
+	</nav>
 
 </header>
 
@@ -230,11 +229,15 @@ if (phoneInput) {
 }
 
 const header = document.querySelector("header");
+const hero = document.querySelector(".hero");
 
 let isShrunk = false;
 
-const shrinkPoint = 120;
-const expandPoint = 40;
+// calculate positions once
+const heroBottom = hero.offsetTop + hero.offsetHeight;
+
+const shrinkPoint = heroBottom - 100;
+const expandPoint = heroBottom - 220; // buffer
 
 window.addEventListener("scroll", () => {
 

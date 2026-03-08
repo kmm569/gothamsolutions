@@ -22,13 +22,12 @@
 	</div>
 
 	<nav>
-	<ul>
-		<li><a href="index.html" class="nav-link">Home</a></li>
-		<li><a href="templates.html" class="nav-link">Templates</a></li>
-		<li><a href="about.html" class="nav-link">About</a></li>
-		<li><a href="contact.html" class="nav-link">Contact</a></li>
-	</ul>
-</nav>
+		<ul>
+			<li><a href="index.html" class="nav-link">Home</a></li>
+			<li><a href="about.html" class="nav-link">About</a></li>
+			<li><a href="contact.html" class="nav-link">Contact</a></li>
+		</ul>
+	</nav>
 
 </header>
 
@@ -184,22 +183,23 @@ if (params.has("source")) {
 }
 
 const header = document.querySelector("header");
+const hero = document.querySelector(".hero");
 
 let isShrunk = false;
 
-const shrinkPoint = 120;
-const expandPoint = 40;
-
 window.addEventListener("scroll", () => {
 
-	const scroll = window.scrollY;
+	const heroBottom = hero.offsetTop + hero.offsetHeight;
 
-	if (!isShrunk && scroll > shrinkPoint) {
+	const shrinkPoint = heroBottom - 120;
+	const expandPoint = heroBottom - 260; // buffer
+
+	if (!isShrunk && window.scrollY > shrinkPoint) {
 		header.classList.add("scrolled");
 		isShrunk = true;
 	}
 
-	if (isShrunk && scroll < expandPoint) {
+	if (isShrunk && window.scrollY < expandPoint) {
 		header.classList.remove("scrolled");
 		isShrunk = false;
 	}

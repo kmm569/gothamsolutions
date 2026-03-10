@@ -77,6 +77,31 @@
 			if (params.has("source")) {
 				sessionStorage.setItem("source", params.get("source"));
 			}
+
+			const header = document.querySelector("header");
+			const hero = document.querySelector(".hero");
+
+			let isShrunk = false;
+
+			// calculate positions once
+			const heroBottom = hero.offsetTop + hero.offsetHeight;
+
+			const shrinkPoint = heroBottom - 100;
+			const expandPoint = heroBottom - 220; // buffer
+
+			window.addEventListener("scroll", () => {
+				const scroll = window.scrollY;
+
+				if (!isShrunk && scroll > shrinkPoint) {
+					header.classList.add("scrolled");
+					isShrunk = true;
+				}
+
+				if (isShrunk && scroll < expandPoint) {
+					header.classList.remove("scrolled");
+					isShrunk = false;
+				}
+			});
 		</script>
 	</body>
 </html>

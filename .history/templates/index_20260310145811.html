@@ -86,16 +86,6 @@
 				});
 			});
 
-			const params = new URLSearchParams(window.location.search);
-
-			if (params.has("template")) {
-				sessionStorage.setItem("template", params.get("template"));
-			}
-
-			if (params.has("source")) {
-				sessionStorage.setItem("source", params.get("source"));
-			}
-
 			const header = document.querySelector("header");
 
 			let isShrunk = false;

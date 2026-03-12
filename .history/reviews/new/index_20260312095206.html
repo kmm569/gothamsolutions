@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Leave a Review | Gotham Solutions</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+<header>
+	<div class="nav-container">
+
+		<div class="logo">
+			<img src="/LogoSolo.png" alt="Gotham Solutions">
+		</div>
+
+		<nav>
+			<ul class="nav-links">
+				<li><a href="/">Home</a></li>
+				<li><a href="/about/">About</a></li>
+				<li><a href="/templates/">Templates</a></li>
+				<li><a href="/contact/">Contact</a></li>
+				<li><a href="/reviews/">Reviews</a></li>
+			</ul>
+		</nav>
+
+	</div>
+</header>
+
+
+<section class="page-header">
+
+	<div class="container">
+		<h1>Leave a Review</h1>
+		<p>Your feedback helps other businesses know what to expect.</p>
+	</div>
+
+</section>
+
+
+<section class="section">
+
+	<div class="container">
+
+		<p id="status"></p>
+
+		<form
+			action="https://script.google.com/macros/s/AKfycbwKmVo3ZUbQQKJZX6465AFCs7X93Y6zOUUWhPNcIFCREsZjv8862jFix98XCnKtpo5Diw/exec"
+			method="POST"
+			class="review-form">
+
+			<input type="hidden" name="token" id="token">
+
+			<label>Your Name</label>
+			<input name="name" required>
+
+			<label>Rating</label>
+
+			<select name="rating">
+				<option value="5">★★★★★</option>
+				<option value="4">★★★★</option>
+				<option value="3">★★★</option>
+				<option value="2">★★</option>
+				<option value="1">★</option>
+			</select>
+
+			<label>Review</label>
+			<textarea name="review" required></textarea>
+
+			<button type="submit">Submit Review</button>
+
+		</form>
+
+	</div>
+
+</section>
+
+
+<footer>
+	<div class="container">
+		<p>© Gotham Solutions</p>
+	</div>
+</footer>
+
+
+<script>
+
+const API = "https://script.google.com/macros/s/AKfycbwKmVo3ZUbQQKJZX6465AFCs7X93Y6zOUUWhPNcIFCREsZjv8862jFix98XCnKtpo5Diw/exec";
+
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+
+document.getElementById("token").value = token;
+
+async function validateToken(){
+
+	if(!token){
+		document.getElementById("status").innerText =
+			"This review link is missing a token.";
+		document.querySelector(".review-form").style.display = "none";
+		return;
+	}
+
+	const res = await fetch(API + "?action=validate&token=" + token);
+	const data = await res.json();
+
+	if(!data.valid){
+
+		document.getElementById("status").innerText =
+			"This review link is invalid or already used.";
+
+		document.querySelector(".review-form").style.display = "none";
+
+	}else{
+
+		document.getElementById("status").innerText =
+			"Submitting review for invoice " + data.invoice;
+
+	}
+
+}
+
+validateToken();
+
+</script>
+
+</body>
+</html>

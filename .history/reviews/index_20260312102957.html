@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Client Reviews | Gotham Solutions</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+<header>
+			<div class="logo-container">
+				<img href="/" src="../LogoSolo.png" alt="Gotham Solutions Logo" class="logo" />
+				<h1>Gotham Solutions</h1>
+			</div>
+
+			<nav>
+				<ul>
+					<li><a href="/" class="nav-link">Home</a></li>
+					<li><a href="/templates/" class="nav-link">Templates</a></li>
+					<li><a href="/about/" class="nav-link">About</a></li>
+					<li><a href="/contact/" class="nav-link">Contact</a></li>
+					<li><a href="/reviews/" class="nav-link">Reviews</a></li>
+				</ul>
+			</nav>
+		</header>
+
+
+<main>
+
+	<section class="content-wrapper">
+
+		<div class="hero">
+			<h2>Client Reviews</h2>
+			<p class="hero-text">
+				What clients say about working with Gotham Solutions.
+			</p>
+		</div>
+
+		<div id="review-average" class="review-average"></div>
+
+		<div id="reviews-container" class="review-grid"></div>
+
+	</section>
+
+</main>
+
+
+<footer>
+
+	<div class="container">
+		<p>© Gotham Solutions</p>
+	</div>
+
+</footer>
+
+
+<script>
+
+const API = "https://script.google.com/macros/s/AKfycbwKmVo3ZUbQQKJZX6465AFCs7X93Y6zOUUWhPNcIFCREsZjv8862jFix98XCnKtpo5Diw/exec";
+
+async function loadReviews(){
+
+	const res = await fetch(API);
+	const reviews = await res.json();
+
+	const container = document.getElementById("reviews-container");
+
+	if(!reviews.length){
+
+	container.innerHTML = `
+		<div class="review-empty">
+
+			<div class="stars">★★★★★</div>
+
+			<h3>Be the first to review Gotham Solutions</h3>
+
+			<p>
+				Gotham Solutions is currently helping small businesses streamline
+				their workflows with custom spreadsheet systems.
+			</p>
+
+			<p>
+				Place an order or request a custom solution and your review could
+				be featured here.
+			</p>
+
+			<a href="/contact/" class="button-primary">
+				Request a Solution
+			</a>
+
+		</div>
+	`;
+
+	return;
+}
+
+	let total = 0;
+
+	reviews.forEach(r => {
+
+		total += Number(r.rating);
+
+		const stars = "★".repeat(r.rating);
+
+		container.innerHTML += `
+			<div class="review-card">
+				<div class="stars">${stars}</div>
+				<p>${r.review}</p>
+				<strong>${r.name}</strong>
+			</div>
+		`;
+
+	});
+
+	const avg = (total / reviews.length).toFixed(1);
+
+	document.getElementById("review-average").innerHTML =
+		"<strong>" + avg + " / 5</strong> average rating";
+
+}
+
+loadReviews();
+
+const header = document.querySelector("header");
+
+			let isShrunk = false;
+
+			const shrinkPoint = 120;
+			const expandPoint = 40;
+
+			window.addEventListener("scroll", () => {
+				const scroll = window.scrollY;
+
+				if (!isShrunk && scroll > shrinkPoint) {
+					header.classList.add("scrolled");
+					isShrunk = true;
+				}
+
+				if (isShrunk && scroll < expandPoint) {
+					header.classList.remove("scrolled");
+					isShrunk = false;
+				}
+			});
+
+</script>
+
+</body>
+</html>

@@ -157,26 +157,17 @@
 				sessionStorage.setItem("source", params.get("source"));
 			}
 
-			const header = document.querySelector("header");
+			/*const header = document.querySelector("header");
 
-			let isShrunk = false;
+window.addEventListener("scroll", () => {
 
-			const shrinkPoint = 120;
-			const expandPoint = 40;
+	if (window.scrollY > 10) {
+		header.classList.add("scrolled");
+	} else {
+		header.classList.remove("scrolled");
+	}
 
-			window.addEventListener("scroll", () => {
-				const scroll = window.scrollY;
-
-				if (!isShrunk && scroll > shrinkPoint) {
-					header.classList.add("scrolled");
-					isShrunk = true;
-				}
-
-				if (isShrunk && scroll < expandPoint) {
-					header.classList.remove("scrolled");
-					isShrunk = false;
-				}
-			});
+});*/
 		</script>
 	</body>
 </html>

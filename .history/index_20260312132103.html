@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Gotham Solutions</title>
+
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="icon" href="./icons/favicon.ico" />
+	</head>
+
+	<body>
+		<header>
+			<div class="logo-container">
+				<img href="/" src="LogoSolo.png" alt="Gotham Solutions Logo" class="logo" />
+				<h1>Gotham Solutions</h1>
+			</div>
+
+			<nav>
+				<ul>
+					<li><a href="/" class="nav-link">Home</a></li>
+					<li><a href="/templates/" class="nav-link">Templates</a></li>
+					<li><a href="/about/" class="nav-link">About</a></li>
+					<li><a href="/contact/" class="nav-link">Contact</a></li>
+					<li><a href="/reviews/" class="nav-link">Reviews</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<div class="content-wrapper">
+				<section class="hero">
+					<h2>Organize Your Business. Simplify Your Workflow.</h2>
+
+					<p class="hero-text">
+						Custom-built tools that help you organize your work, track important
+						information, and spend less time on manual tasks.
+					</p>
+
+					<div class="hero-buttons">
+						<a href="/contact/" class="button-primary"> Request a Quote </a>
+
+						<a href="/about/" class="button-secondary"> Learn More </a>
+					</div>
+				</section>
+
+				<section class="services">
+					<h2>What I Build</h2>
+
+					<div class="service-grid">
+						<div class="service-card">
+							<h3>Business Trackers</h3>
+							<p>
+								Track projects, clients, invoices, or tasks using a system
+								designed specifically for your workflow.
+							</p>
+						</div>
+
+						<div class="service-card">
+							<h3>Automation</h3>
+							<p>
+								Remove manual calculations and repetitive tasks with formulas
+								and Apps Script automation.
+							</p>
+						</div>
+
+						<div class="service-card">
+							<h3>Custom Workflow Systems</h3>
+							<p>
+								Turn scattered information into a single organized system that
+								keeps everything in one place.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="process">
+					<h2>How It Works</h2>
+
+					<div class="process-grid">
+						<div class="process-step">
+							<h3>1. Tell Me What You Need</h3>
+							<p>
+								Describe the problem you're trying to solve. What's slowing down
+								your workflow?
+							</p>
+						</div>
+
+						<div class="process-step">
+							<h3>2. I Build the System</h3>
+							<p>I design a custom spreadsheet tailored to your workflow.</p>
+						</div>
+
+						<div class="process-step">
+							<h3>3. Your Work Gets Easier</h3>
+							<p>Your data stays organized and manual work disappears.</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="why-section">
+					<h2>Why Gotham Solutions?</h2>
+
+					<p>
+						Every system is designed to be simple, practical, and built around
+						how your business actually works.
+					</p>
+
+					<ul class="about-points">
+						<li>
+							<strong>Custom Built</strong><br />
+							Every system is designed specifically for the way you track
+							information and manage your workflow.
+						</li>
+
+						<li>
+							<strong>Simple to Use</strong><br />
+							Tools are built to stay easy to understand and maintain, not
+							overly complex or difficult to manage.
+						</li>
+
+						<li>
+							<strong>Flexible</strong><br />
+							Because everything is built in Google Sheets, your system can grow
+							and adapt as your needs change.
+						</li>
+					</ul>
+				</section>
+
+				<section class="cta">
+					<h2>Ready to Simplify Your Workflow?</h2>
+
+					<p>
+						Whether you're tracking projects, managing clients, or organizing
+						business data, I can build a simple system to keep everything
+						structured and easy to manage.
+					</p>
+
+					<a href="/contact/" class="button-primary"> Request a Quote </a>
+				</section>
+			</div>
+		</main>
+
+		<footer>
+			<p>&copy; 2026 Gotham Solutions</p>
+		</footer>
+
+		<script>
+			const params = new URLSearchParams(window.location.search);
+
+			if (params.has("template")) {
+				sessionStorage.setItem("template", params.get("template"));
+			}
+
+			if (params.has("source")) {
+				sessionStorage.setItem("source", params.get("source"));
+			}
+
+			const header = document.querySelector("header");
+
+let collapsed = false;
+
+window.addEventListener("scroll", () => {
+
+	const scroll = window.scrollY;
+
+	// collapse once user scrolls down
+	if (!collapsed && scroll > 5) {
+		header.classList.add("scrolled");
+		collapsed = true;
+	}
+
+	// expand only when actually back at top
+	if (collapsed && scroll === 0) {
+		header.classList.remove("scrolled");
+		collapsed = false;
+	}
+
+});
+		</script>
+	</body>
+</html>

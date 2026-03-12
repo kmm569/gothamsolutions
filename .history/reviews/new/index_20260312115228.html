@@ -54,7 +54,7 @@
 						<span data-value="5">★</span>
 					</div>
 
-					<input type="hidden" id="rating" value="" />
+					<input type="hidden" id="rating" value="0" />
 
 					<label>Review</label>
 					<textarea id="review" required></textarea>
@@ -107,11 +107,6 @@
 
 			form.addEventListener("submit", async function (e) {
 				e.preventDefault();
-
-				if (!ratingInput.value) {
-	alert("Please select a rating.");
-	return;
-}
 
 				const payload = {
 					token: token,

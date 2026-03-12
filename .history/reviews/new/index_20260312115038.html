@@ -54,7 +54,7 @@
 						<span data-value="5">★</span>
 					</div>
 
-					<input type="hidden" id="rating" value="" />
+					<input type="hidden" id="rating" value="5" />
 
 					<label>Review</label>
 					<textarea id="review" required></textarea>
@@ -107,11 +107,6 @@
 
 			form.addEventListener("submit", async function (e) {
 				e.preventDefault();
-
-				if (!ratingInput.value) {
-	alert("Please select a rating.");
-	return;
-}
 
 				const payload = {
 					token: token,
@@ -169,7 +164,7 @@
 			const stars = document.querySelectorAll("#starRating span");
 			const ratingInput = document.getElementById("rating");
 
-			let currentRating = 0;
+			let currentRating = 5;
 
 			function paintStars(rating) {
 				stars.forEach((star) => {

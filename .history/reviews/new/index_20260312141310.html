@@ -117,18 +117,10 @@
 	alert("Please select a rating.");
 	return;
 }
-const nameInput = document.getElementById("name").value.trim();
-const anonymous = document.getElementById("anonymous").checked;
-
-let displayName = "Anonymous Client";
-
-if(!anonymous && nameInput){
-	displayName = nameInput;
-}
 
 				const payload = {
 					token: token,
-					name: displayName,
+					name: document.getElementById("name").value,
 					rating: document.getElementById("rating").value,
 					review: document.getElementById("review").value,
 				};
@@ -213,26 +205,6 @@ if(!anonymous && nameInput){
 					paintStars(currentRating);
 				});
 			});
-
-			const anonCheckbox = document.getElementById("anonymous");
-const nameField = document.getElementById("name");
-
-anonCheckbox.addEventListener("change", () => {
-
-	if(anonCheckbox.checked){
-
-		nameField.disabled = true;
-		nameField.value = "";
-		nameField.placeholder = "Anonymous review";
-
-	}else{
-
-		nameField.disabled = false;
-		nameField.placeholder = "First name or leave blank";
-
-	}
-
-});
 		</script>
 	</body>
 </html>

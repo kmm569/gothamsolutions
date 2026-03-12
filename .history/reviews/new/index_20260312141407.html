@@ -213,26 +213,6 @@ if(!anonymous && nameInput){
 					paintStars(currentRating);
 				});
 			});
-
-			const anonCheckbox = document.getElementById("anonymous");
-const nameField = document.getElementById("name");
-
-anonCheckbox.addEventListener("change", () => {
-
-	if(anonCheckbox.checked){
-
-		nameField.disabled = true;
-		nameField.value = "";
-		nameField.placeholder = "Anonymous review";
-
-	}else{
-
-		nameField.disabled = false;
-		nameField.placeholder = "First name or leave blank";
-
-	}
-
-});
 		</script>
 	</body>
 </html>

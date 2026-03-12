@@ -583,7 +583,7 @@ body {
 }
 
 .review-form button{
-	margin-top:10px;
+	margin-top:16px;
 	padding:12px;
 	background:#1d3557;
 	color:white;
@@ -595,6 +595,14 @@ body {
 
 .review-form button:hover{
 	background:#274777;
+}
+
+.review-form{
+	max-width:600px;
+	margin:24px auto 0 auto;
+	display:flex;
+	flex-direction:column;
+	gap:12px;
 }
 
 .review-card strong{
@@ -620,4 +628,25 @@ body {
 .review-empty .stars{
 	font-size:26px;
 	margin-bottom:10px;
+}
+
+.star-rating{
+	color:#ccc;
+	cursor:pointer;
+	user-select:none;
+	font-size:34px;
+	margin:8px 0 14px 0;
+}
+
+.star-rating span{
+	margin-right:6px;
+	transition:color .15s ease;
+}
+
+.star-rating span.active{
+	color:#f5b301;
+}
+
+.star-rating span:hover{
+	color:#f5b301;
 }

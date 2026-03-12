@@ -41,20 +41,20 @@
 				<p id="invoiceLabel"></p>
 
 				<form class="review-form" id="reviewForm">
-					<label>Your Name (Public)</label>
+					<label>Your Name</label>
 					<input type="text" id="name" required />
 
 					<label>Rating</label>
 
-					<div class="star-rating" id="starRating">
-						<span data-value="1">★</span>
-						<span data-value="2">★</span>
-						<span data-value="3">★</span>
-						<span data-value="4">★</span>
-						<span data-value="5">★</span>
-					</div>
+<div class="star-rating" id="starRating">
+	<span data-value="1">★</span>
+	<span data-value="2">★</span>
+	<span data-value="3">★</span>
+	<span data-value="4">★</span>
+	<span data-value="5">★</span>
+</div>
 
-					<input type="hidden" id="rating" value="" />
+<input type="hidden" id="rating" value="5">
 
 					<label>Review</label>
 					<textarea id="review" required></textarea>
@@ -105,38 +105,39 @@
 
 			const form = document.querySelector(".review-form");
 
-			form.addEventListener("submit", async function (e) {
-				e.preventDefault();
+form.addEventListener("submit", async function(e) {
 
-				if (!ratingInput.value) {
-	alert("Please select a rating.");
-	return;
-}
+	e.preventDefault();
 
-				const payload = {
-					token: token,
-					name: document.getElementById("name").value,
-					rating: document.getElementById("rating").value,
-					review: document.getElementById("review").value,
-				};
+	const payload = {
+		token: token,
+		name: document.getElementById("name").value,
+		rating: document.getElementById("rating").value,
+		review: document.getElementById("review").value
+	};
 
-				const response = await fetch(API, {
-					method: "POST",
-					body: new URLSearchParams(payload),
-				});
+	const response = await fetch(API, {
+		method: "POST",
+		body: new URLSearchParams(payload)
+	});
 
-				const text = await response.text();
+	const text = await response.text();
 
-				if (text === "success") {
-					document.querySelector(".content-wrapper").innerHTML = `
+	if (text === "success") {
+
+		document.querySelector(".content-wrapper").innerHTML = `
 			<h2>Thank you for your review!</h2>
 			<p>Your feedback helps other businesses know what to expect.</p>
 			<a class="button-primary" href="/reviews">View Reviews</a>
 		`;
-				} else {
-					alert("Invalid or already-used review link.");
-				}
-			});
+
+	} else {
+
+		alert("Invalid or already-used review link.");
+
+	}
+
+});
 
 			const header = document.querySelector("header");
 
@@ -160,46 +161,11 @@
 			});
 
 			window.addEventListener("load", () => {
-				if (window.scrollY > shrinkPoint) {
-					header.classList.add("scrolled");
-					isShrunk = true;
-				}
-			});
-
-			const stars = document.querySelectorAll("#starRating span");
-			const ratingInput = document.getElementById("rating");
-
-			let currentRating = 0;
-
-			function paintStars(rating) {
-				stars.forEach((star) => {
-					const value = Number(star.dataset.value);
-
-					if (value <= rating) {
-						star.classList.add("active");
-					} else {
-						star.classList.remove("active");
-					}
-				});
-			}
-
-			paintStars(currentRating);
-
-			stars.forEach((star) => {
-				star.addEventListener("mouseover", () => {
-					paintStars(star.dataset.value);
-				});
-
-				star.addEventListener("mouseout", () => {
-					paintStars(currentRating);
-				});
-
-				star.addEventListener("click", () => {
-					currentRating = Number(star.dataset.value);
-					ratingInput.value = currentRating;
-					paintStars(currentRating);
-				});
-			});
+	if (window.scrollY > shrinkPoint) {
+		header.classList.add("scrolled");
+		isShrunk = true;
+	}
+});
 		</script>
 	</body>
 </html>

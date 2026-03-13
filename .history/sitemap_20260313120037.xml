@@ -33,15 +33,5 @@
   <priority>0.80</priority>
 </url>
 
-<url>
-  <loc>https://solutions.gothamstudio.us/services/</loc>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://solutions.gothamstudio.us/faq/</loc>
-  <priority>0.80</priority>
-</url>
-
 
 </urlset>

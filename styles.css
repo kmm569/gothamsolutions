@@ -38,7 +38,9 @@ header {
 .logo-container {
 	display: flex;
 	align-items: center;
-	gap: 12px;
+	gap: 10px;
+
+	flex-shrink: 0;
 
 	height: 44px;
 	overflow: hidden;
@@ -886,6 +888,8 @@ footer {
 	border: none;
 	cursor: pointer;
 
+	margin-left: auto;
+
 	width: 30px;
 	height: 22px;
 
@@ -936,6 +940,12 @@ footer {
 /* mobile nav */
 
 @media (max-width: 900px) {
+
+	.header-inner {
+	width: 100%;
+	max-width: none;
+	padding: 16px 16px;
+}
 	.nav-toggle {
 		display: block;
 	}

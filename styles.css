@@ -825,7 +825,8 @@ footer {
 .site-header {
 	background: #ffffff;
 	border-bottom: 1px solid #e2e8f0;
-	position: relative;
+	position: sticky;
+	top: 0;
 	z-index: 100;
 }
 
@@ -984,4 +985,31 @@ footer {
 	.main-nav.nav-open {
 		max-height: 420px;
 	}
+}
+
+/* DESKTOP HEADER FIX */
+
+@media (min-width: 769px) {
+
+	.header-inner {
+		max-width: 1100px;
+		margin: 0 auto;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+}
+
+/* mobile */
+@media (max-width: 768px) {
+
+	.header-inner {
+		max-width: none;
+		width: 100%;
+		margin: 0;
+		padding: 16px 20px;
+	}
+
 }

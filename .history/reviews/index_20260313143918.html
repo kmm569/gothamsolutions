@@ -33,7 +33,26 @@
 	</head>
 
 	<body>
-		<div id="site-header"></div>
+		<header>
+			<div class="logo-container">
+				<a href="/">
+					<img src="../LogoSolo.png" alt="Gotham Solutions Logo" class="logo" />
+				</a>
+				<h1>Gotham Solutions</h1>
+			</div>
+
+			<nav>
+				<ul>
+					<li><a href="/" class="nav-link">Home</a></li>
+					<li><a href="/services/" class="nav-link">Services</a></li>
+					<li><a href="/templates/" class="nav-link">Templates</a></li>
+					<li><a href="/about/" class="nav-link">About</a></li>
+					<li><a href="/contact/" class="nav-link">Contact</a></li>
+					<li><a href="/reviews/" class="nav-link">Reviews</a></li>
+					<li><a href="/faq/" class="nav-link">FAQ</a></li>
+				</ul>
+			</nav>
+		</header>
 
 		<main>
 			<section class="content-wrapper">
@@ -70,7 +89,21 @@
 			</section>
 		</main>
 
-		<div id="site-footer"></div>
+		<footer>
+			<div class="footer-inner">
+				<nav class="footer-nav">
+					<a href="/">Home</a>
+					<a href="/services/">Services</a>
+					<a href="/templates/">Templates</a>
+					<a href="/about/">About</a>
+					<a href="/contact/">Contact</a>
+					<a href="/reviews/">Reviews</a>
+					<a href="/faq/">FAQ</a>
+				</nav>
+
+				<p>&copy; 2026 Gotham Solutions</p>
+			</div>
+		</footer>
 
 		<script>
 	const API =
@@ -208,6 +241,5 @@
 
 	loadReviews();
 </script>
-<script src="/js/layout.js"></script>
 	</body>
 </html>

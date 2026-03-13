@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta name="robots" content="index, follow" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Client Reviews | Gotham Solutions</title>
+
+		<meta
+			name="description"
+			content="See what clients say about Gotham Solutions and our custom spreadsheet systems, dashboards, and automation tools."
+		/>
+
+		<meta
+			name="keywords"
+			content="gotham solutions reviews, spreadsheet consultant reviews, spreadsheet services feedback"
+		/>
+
+		<link rel="canonical" href="https://solutions.gothamstudio.us/reviews/" />
+
+		<link rel="icon" href="../icons/favicon.ico" />
+		<link rel="stylesheet" href="../styles.css" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Gotham Solutions Reviews" />
+		<meta
+			property="og:description"
+			content="Client feedback for custom spreadsheet systems and automation solutions."
+		/>
+		<meta property="og:url" content="https://solutions.gothamstudio.us/reviews/" />
+		<meta property="og:image" content="https://solutions.gothamstudio.us/LogoSolo.png" />
+	</head>
+
+	<body>
+		<header>
+			<div class="logo-container">
+				<a href="/">
+					<img src="../LogoSolo.png" alt="Gotham Solutions Logo" class="logo" />
+				</a>
+				<h1>Gotham Solutions</h1>
+			</div>
+
+			<nav>
+				<ul>
+					<li><a href="/" class="nav-link">Home</a></li>
+					<li><a href="/services/" class="nav-link">Services</a></li>
+					<li><a href="/templates/" class="nav-link">Templates</a></li>
+					<li><a href="/about/" class="nav-link">About</a></li>
+					<li><a href="/contact/" class="nav-link">Contact</a></li>
+					<li><a href="/reviews/" class="nav-link">Reviews</a></li>
+					<li><a href="/faq/" class="nav-link">FAQ</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<section class="content-wrapper">
+				<div class="hero">
+					<h2>Client Reviews</h2>
+					<p class="hero-text">
+						What clients say about working with Gotham Solutions.
+					</p>
+				</div>
+
+				<div id="review-average" class="review-average"></div>
+
+				<p class="review-note">
+					Reviews are collected from verified clients after completed projects.
+				</p>
+
+				<div id="reviews-loading" class="review-loading" aria-live="polite">
+					<div class="review-loading-spinner" aria-hidden="true"></div>
+					<h3>Loading reviews...</h3>
+					<p>Pulling the latest client feedback now.</p>
+				</div>
+
+				<div
+					id="reviews-error"
+					class="review-error"
+					aria-live="polite"
+					style="display: none;"
+				>
+					<h3>Couldn’t load reviews right now</h3>
+					<p>Please refresh the page and try again in a moment.</p>
+				</div>
+
+				<div id="reviews-container" class="review-grid"></div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="footer-inner">
+				<nav class="footer-nav">
+					<a href="/">Home</a>
+					<a href="/services/">Services</a>
+					<a href="/templates/">Templates</a>
+					<a href="/about/">About</a>
+					<a href="/contact/">Contact</a>
+					<a href="/reviews/">Reviews</a>
+					<a href="/faq/">FAQ</a>
+				</nav>
+
+				<p>&copy; 2026 Gotham Solutions</p>
+			</div>
+		</footer>
+
+		<script>
+			const API =
+				"https://script.google.com/macros/s/AKfycbwKmVo3ZUbQQKJZX6465AFCs7X93Y6zOUUWhPNcIFCREsZjv8862jFix98XCnKtpo5Diw/exec";
+
+			async function loadReviews() {
+				const container = document.getElementById("reviews-container");
+				const average = document.getElementById("review-average");
+				const loading = document.getElementById("reviews-loading");
+				const errorBox = document.getElementById("reviews-error");
+
+				container.innerHTML = "";
+				average.innerHTML = "";
+				loading.style.display = "block";
+				errorBox.style.display = "none";
+
+				try {
+					const res = await fetch(API);
+
+					if (!res.ok) {
+						throw new Error("Failed to fetch reviews");
+					}
+
+					const reviews = await res.json();
+
+					loading.style.display = "none";
+
+					if (!Array.isArray(reviews) || !reviews.length) {
+						container.innerHTML = `
+							<div class="review-empty">
+								<div class="stars">★★★★★</div>
+
+								<h3>Be the first to review Gotham Solutions</h3>
+
+								<p>
+									Gotham Solutions helps small businesses streamline their workflows
+									with custom spreadsheet systems.
+								</p>
+
+								<p>
+									Client reviews will appear here as projects are completed.
+								</p>
+
+								<br />
+
+								<a href="/contact/" class="button-primary">
+									Request a Custom Solution
+								</a>
+							</div>
+						`;
+						return;
+					}
+
+					let total = 0;
+					let cards = "";
+
+					reviews.forEach((r) => {
+						const rating = Number(r.rating) || 0;
+						total += rating;
+
+						const stars = "★".repeat(rating);
+
+						cards += `
+							<div class="review-card">
+								<div class="stars">${stars}</div>
+								<p>${r.review}</p>
+								<strong>${r.name}</strong>
+							</div>
+						`;
+					});
+
+					container.innerHTML = cards;
+
+					const avg = (total / reviews.length).toFixed(1);
+
+					average.innerHTML = "<strong>" + avg + " / 5</strong> average rating";
+				} catch (error) {
+					console.error("Review load error:", error);
+					loading.style.display = "none";
+					errorBox.style.display = "block";
+				}
+			}
+
+			loadReviews();
+		</script>
+	</body>
+</html>

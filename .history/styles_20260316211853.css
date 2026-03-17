@@ -200,9 +200,9 @@ main {
 /* SERVICES */
 
 .services {
-	margin-top: 10px;
-	margin-bottom: 30px;
-	padding-top: 0;
+	margin-bottom: 50px;
+	margin-top: 0;
+	padding-top: 1rem;
 }
 
 .services h2 {
@@ -421,8 +421,8 @@ body {
 
 .content-wrapper {
 	max-width: 1100px;
-	margin: 24px auto;
-	padding: 32px;
+	margin: 40px auto;
+	padding: 40px;
 
 	background: rgba(255, 255, 255, 0.85);
 
@@ -1045,9 +1045,4 @@ footer {
 	background: #fff;
 	border-radius: 10px;
 	padding: 10px;
-}
-
-.hero {
-	margin-top: 10px;
-	margin-bottom: 30px;
 }

@@ -1,0 +1,422 @@
+/* ===========================
+   TEMPLATE PAGE
+=========================== */
+
+.template-page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+
+/* ===========================
+   HERO
+=========================== */
+
+.template-hero {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.template-hero h1 {
+	font-size: 36px;
+	font-weight: 700;
+	color: #2c4a73;
+	margin-bottom: 15px;
+}
+
+.template-subtitle {
+	font-size: 18px;
+	color: #5a6f8f;
+	max-width: 700px;
+	margin: 0 auto 25px auto;
+	line-height: 1.5;
+}
+
+
+/* ===========================
+   ACTION BUTTONS
+=========================== */
+
+.template-actions {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-top: 15px;
+}
+
+.primary-btn {
+	background: #1e3a5f;
+	color: #fff;
+	padding: 12px 22px;
+	border-radius: 8px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background 0.2s ease;
+}
+
+.primary-btn:hover {
+	background: #2c4a73;
+}
+
+.secondary-btn {
+	background: #2aa07c;
+	color: #fff;
+	padding: 12px 22px;
+	border-radius: 8px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background 0.2s ease;
+}
+
+.secondary-btn:hover {
+	background: #238a6a;
+}
+
+
+/* ===========================
+   TEMPLATE PREVIEW
+=========================== */
+
+.template-main-preview {
+	text-align: center;
+	margin: 50px 0;
+}
+
+.template-preview-image {
+	width: 100%;
+	max-width: 900px;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+
+/* ===========================
+   CONTENT SECTIONS
+=========================== */
+
+.template-description,
+.template-features,
+.template-use-cases,
+.template-how-it-works {
+	margin-top: 60px;
+}
+
+.template-description h2,
+.template-features h2,
+.template-use-cases h2,
+.template-how-it-works h2 {
+	font-size: 26px;
+	color: #2c4a73;
+	margin-bottom: 15px;
+}
+
+.template-description p,
+.template-use-cases p {
+	font-size: 16px;
+	line-height: 1.6;
+	color: #4b5f7b;
+	max-width: 750px;
+}
+
+
+/* ===========================
+   FEATURES LIST
+=========================== */
+
+.feature-list {
+	list-style: none;
+	padding: 0;
+	margin-top: 20px;
+}
+
+.feature-list li {
+	background: #f4f7fb;
+	padding: 14px 18px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	font-size: 15px;
+	color: #2c4a73;
+}
+
+
+/* ===========================
+   USE CASE LIST
+=========================== */
+
+.template-use-cases ul {
+	margin-top: 15px;
+	padding-left: 20px;
+}
+
+.template-use-cases li {
+	margin-bottom: 8px;
+	color: #4b5f7b;
+}
+
+
+/* ===========================
+   HOW IT WORKS
+=========================== */
+
+.template-how-it-works ol {
+	margin-top: 15px;
+	padding-left: 20px;
+}
+
+.template-how-it-works li {
+	margin-bottom: 10px;
+	color: #4b5f7b;
+}
+
+
+/* ===========================
+   FINAL CTA
+=========================== */
+
+.template-cta {
+	text-align: center;
+	margin-top: 80px;
+	padding: 40px;
+	background: #f4f7fb;
+	border-radius: 12px;
+}
+
+.template-cta h2 {
+	font-size: 28px;
+	color: #2c4a73;
+	margin-bottom: 10px;
+}
+
+.template-cta p {
+	margin-bottom: 20px;
+	color: #4b5f7b;
+}
+
+/* ===========================
+   TEMPLATE IMAGE CAROUSEL
+=========================== */
+
+.template-carousel{
+	margin:50px auto;
+	text-align:center;
+	width:100%;
+}
+
+.carousel{
+	position:relative;
+	max-width:700px;
+	margin:0 auto;
+}
+
+.carousel-view{
+	overflow:hidden;
+	border-radius:12px;
+	box-shadow:0 14px 35px rgba(0,0,0,0.15);
+	background:#fff;
+}
+
+.carousel-track{
+	display:flex;
+	transition:transform 0.35s ease;
+}
+
+.carousel-slide{
+	width:100%;
+	flex:0 0 100%;
+	object-fit:contain;
+}
+
+.carousel-arrow{
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	background:rgba(30,58,95,0.9);
+	color:white;
+	border:none;
+	width:40px;
+	height:40px;
+	font-size:24px;
+	border-radius:8px;
+	cursor:pointer;
+	z-index:5;
+}
+
+.carousel-arrow.prev{
+	left:-45px;
+}
+
+.carousel-arrow.next{
+	right:-45px;
+}
+
+.carousel-arrow:hover{
+	background:#2c4a73;
+}
+
+
+/* thumbnails */
+
+.carousel-thumbnails{
+	display:flex;
+	justify-content:center;
+	gap:10px;
+	margin-top:16px;
+	width:100%;
+}
+
+.carousel-thumb{
+	width:80px;
+	height:50px;
+	object-fit:cover;
+	border-radius:6px;
+	cursor:pointer;
+	opacity:0.6;
+	border:2px solid transparent;
+}
+
+.carousel-thumb.active{
+	opacity:1;
+	border-color:#2c4a73;
+}
+
+.carousel-thumb:hover{
+	opacity:1;
+}
+
+
+/* mobile */
+
+@media(max-width:900px){
+
+	.carousel-arrow.prev{
+		left:10px;
+	}
+
+	.carousel-arrow.next{
+		right:10px;
+	}
+
+}
+
+.template-carousel {
+	margin: 50px auto 60px auto;
+}
+
+/* ===========================
+   ADVANCED TEMPLATE CAROUSEL
+=========================== */
+
+.carousel {
+	position: relative;
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.carousel-view {
+	overflow: hidden;
+	border-radius: 12px;
+	box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+}
+
+.carousel-track {
+	display: flex;
+	transition: transform 0.4s ease;
+}
+
+.carousel-slide {
+	width: 100%;
+	flex-shrink: 0;
+	object-fit: contain;
+	background: #fff;
+}
+
+.carousel-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(30,58,95,0.9);
+	color: white;
+	border: none;
+	width: 42px;
+	height: 42px;
+	font-size: 26px;
+	border-radius: 8px;
+	cursor: pointer;
+	z-index: 5;
+}
+
+.carousel-arrow.prev {
+	left: -50px;
+}
+
+.carousel-arrow.next {
+	right: -50px;
+}
+
+.carousel-arrow:hover {
+	background: #2c4a73;
+}
+
+
+/* thumbnails */
+
+.carousel-thumbnails {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	margin-top: 15px;
+	flex-wrap: wrap;
+}
+
+.carousel-thumb {
+	width: 80px;
+	height: 50px;
+	object-fit: cover;
+	border-radius: 6px;
+	cursor: pointer;
+	opacity: 0.6;
+	border: 2px solid transparent;
+}
+
+.carousel-thumb.active {
+	opacity: 1;
+	border-color: #2c4a73;
+}
+
+.carousel-thumb:hover {
+	opacity: 1;
+}
+
+
+/* mobile */
+
+@media (max-width: 900px) {
+
+	.carousel-arrow.prev {
+		left: 10px;
+	}
+
+	.carousel-arrow.next {
+		right: 10px;
+	}
+
+}
+
+.template-actions a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 16px 28px;
+	min-width: 220px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.template-actions {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap;
+}
